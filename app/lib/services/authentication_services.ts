@@ -3,7 +3,7 @@ import { User } from "../definitions/User";
 
 export async function authenticateUser(email: string, password: string): Promise<User | undefined> {
     try {
-        const response = await fetch('https://localhost:3001/authenticate', {
+        const response = await fetch('http://localhost:3001/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -20,14 +20,14 @@ export async function authenticateUser(email: string, password: string): Promise
     }
 }
 
-export async function registerUser(email: string, password: string): Promise<User | undefined> {
+export async function registerUser(email: string, username:string, password: string): Promise<User | undefined> {
     try {
-        const response = await fetch('https://localhost:3001/register', {
+        const response = await fetch('http://localhost:3001/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ email, password })
+            body: JSON.stringify({ email, username, password })
         });
         if (response.ok) {
             const user = await response.json();

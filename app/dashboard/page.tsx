@@ -1,11 +1,11 @@
+// app/tasks/page.tsx
 import React from 'react';
-import DashboardClient from './dashboard-client';
+import TaskManagementDashboard from './dashboard-client';
 
-export default function DashboardPage() {
+export default function TasksPage() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Task Management Dashboard</h1>
-      <DashboardClient />
+    <div>
+      <TaskManagementDashboard />
     </div>
   );
 }

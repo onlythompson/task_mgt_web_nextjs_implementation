@@ -33,10 +33,12 @@ export async function register(
   try {
     // Extract user data from formData
     const email = formData.get('email') as string;
+    const username = formData.get('email') as string;
     const password = formData.get('password') as string;
     
+    
     // Create the user
-    await registerUser(email, password);
+    await registerUser(email, username, password);
     
     // Sign in the user after successful registration
     await signIn('credentials', formData);
