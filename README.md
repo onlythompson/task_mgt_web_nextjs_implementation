@@ -4,7 +4,7 @@
 1. [Introduction](#1-introduction)
 2. [Technology Stack](#2-technology-stack)
 3. [Project Structure](#3-project-structure)
-4. [Screen Mocks](#4-screen-mocks)
+4. [Screen Implementations](#4-screen-implementations)
 5. [Next.js App Router and Server Components](#5-nextjs-app-router-and-server-components)
 6. [Client Components](#6-client-components)
 7. [Authentication](#7-authentication)
@@ -74,9 +74,7 @@ src/
     └── app/
 ```
 
-## 4. Screen Mocks
-
-We use screen mocks to guide our development and ensure a consistent user interface. These mocks are stored in the `public/mocks` directory and include:
+## 4. Screen Implemenations
 
 ### Home page  
 
@@ -91,27 +89,26 @@ We use screen mocks to guide our development and ensure a consistent user interf
 ![Task Dashboard](/task_mgt_dashboard.PNG)
 
 
-
-These mocks serve as a reference for developers and designers, ensuring that the implemented UI closely matches the intended design.
-
 ## 5. Next.js App Router and Server Components
 
 We leverage Next.js 13+'s new App Router and Server Components for improved performance and developer experience. Here's an example of a Server Component:
 
 ```typescript
-// app/tasks/page.tsx
-import { TaskList } from '@/components/tasks/TaskList'
-import { getTasksFromAPI } from '@/lib/api'
+import React from 'react';
+import AuthForm from './auth-form';
 
-export default async function TasksPage() {
-  const tasks = await getTasksFromAPI()
-
+export default function AuthPage() {
   return (
-    <main>
-      <h1>Tasks</h1>
-      <TaskList initialTasks={tasks} />
-    </main>
-  )
+    <div className="min-h-screen bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center px-4">
+      <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
+        <div className="text-center">
+          <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Welcome to ErgonFlow</h2>
+          <p className="mt-2 text-sm text-gray-600">Sign in to manage your tasks efficiently</p>
+        </div>
+        <AuthForm />
+      </div>
+    </div>
+  );
 }
 ```
 
